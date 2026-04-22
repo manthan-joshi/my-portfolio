@@ -1,0 +1,554 @@
+/* ============================================
+   MANTHAN JOSHI PORTFOLIO — MASTER STYLESHEET
+   ============================================ */
+
+:root{
+  --bg:#0f0f0e;
+  --ink:#fafaf5;
+  --ink-dim:#8a8a80;
+  --accent:#ff5b1f;
+  --panel:#1a1a18;
+  --yellow:#ffd84a;
+  --line:rgba(255,255,245,0.1);
+  --line-strong:rgba(255,255,245,0.15);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Archivo',sans-serif;font-weight:400;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+img{max-width:100%;height:auto}
+
+/* ====== NAV ====== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.5rem 2rem;
+  background:rgba(15,15,14,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,245,0.08);
+  font-size:0.8rem;font-weight:500;letter-spacing:0.05em;
+}
+.brand{display:flex;align-items:center;gap:0.8rem;font-weight:900;text-transform:uppercase;letter-spacing:0.02em;text-decoration:none;color:var(--ink)}
+.brand .mark{width:28px;height:28px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--bg);font-size:0.75rem;font-weight:900}
+.nav-links{display:flex;gap:0.3rem}
+.nav-links a{color:var(--ink);text-decoration:none;padding:0.5rem 1rem;border-radius:999px;transition:all 0.2s;text-transform:uppercase;font-size:0.75rem;letter-spacing:0.08em;font-weight:600}
+.nav-links a:hover{background:var(--ink);color:var(--bg)}
+.nav-links a.current{background:var(--accent);color:var(--bg)}
+
+/* ====== HERO (HOMEPAGE) ====== */
+.hero{
+  min-height:100vh;padding:8rem 2rem 4rem;
+  display:grid;grid-template-columns:1fr;gap:2rem;
+  position:relative;
+}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-dim);font-family:'JetBrains Mono',monospace;flex-wrap:wrap;gap:1rem}
+.hero-top .dot{display:inline-block;width:8px;height:8px;background:var(--accent);border-radius:50%;margin-right:0.5rem;vertical-align:middle;animation:flash 2s infinite}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.hero-headline{
+  font-family:'DM Serif Display',serif;font-weight:400;
+  font-size:clamp(4rem,18vw,22rem);
+  line-height:0.82;
+  letter-spacing:-0.045em;
+  margin:2rem 0;
+}
+.hero-headline .line{display:block;position:relative}
+.hero-headline .line1{color:var(--ink)}
+.hero-headline .line2{color:var(--accent);font-style:italic;padding-left:12%}
+.hero-headline .line3{color:var(--ink);text-align:right}
+.hero-headline .reveal{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero-headline .reveal span{display:inline-block;transform:translateY(100%);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-headline .line1 .reveal span{animation-delay:0.1s}
+.hero-headline .line2 .reveal span{animation-delay:0.3s}
+.hero-headline .line3 .reveal span{animation-delay:0.5s}
+@keyframes up{to{transform:translateY(0)}}
+
+.hero-foot{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:3rem;
+  padding-top:2rem;border-top:1px solid var(--line-strong);
+  align-items:end;
+}
+.hero-intro{font-size:1.1rem;line-height:1.5;max-width:48ch}
+.hero-intro .hl{background:var(--accent);color:var(--bg);padding:0.05em 0.3em;font-weight:700}
+
+.hero-img-wrap{position:relative;width:200px;height:260px}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(0.95)}
+
+.hero-cta{display:flex;flex-direction:column;gap:0.8rem;align-items:flex-end}
+
+/* ====== BUTTONS ====== */
+.btn{padding:1rem 1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.8rem;text-decoration:none;border-radius:999px;transition:all 0.2s;display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--accent);color:var(--bg)}
+.btn-primary:hover{background:var(--yellow);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+
+/* ====== CAPABILITIES BAND (was loud orange marquee) ====== */
+.scroller{
+  background:transparent;
+  color:var(--ink-dim);
+  padding:2.5rem 0;overflow:hidden;white-space:nowrap;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  margin:2rem 0;
+}
+.scroller-track{
+  display:inline-block;animation:roll 90s linear infinite;
+  font-family:'Archivo',sans-serif;font-size:0.85rem;
+  font-weight:500;letter-spacing:0.35em;text-transform:uppercase;
+}
+.scroller-track span{margin:0 2.5rem}
+.scroller-track .star{color:var(--accent);opacity:0.7;font-weight:400}
+@keyframes roll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ====== SECTIONS ====== */
+.section{padding:8rem 2rem;position:relative}
+.section-label{
+  display:flex;align-items:center;gap:1rem;margin-bottom:3rem;
+  font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;
+  font-family:'JetBrains Mono',monospace;color:var(--ink-dim);
+}
+.section-label .num{font-family:'DM Serif Display',serif;font-style:italic;font-size:3rem;color:var(--accent);letter-spacing:-0.02em}
+.section-label .line{flex:1;height:1px;background:var(--line-strong)}
+
+/* ====== ABOUT ====== */
+.about-grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start}
+.about h2{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.05;font-weight:400;letter-spacing:-0.025em;margin-bottom:2rem}
+.about h2 .it{font-style:italic;color:var(--accent)}
+.about-body{font-size:1.15rem;line-height:1.6;color:var(--ink);max-width:60ch}
+.about-body p+p{margin-top:1.5rem}
+.about-body .pull{font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent)}
+
+/* Sidebar — FIXED: now uses Archivo instead of JetBrains Mono */
+.about-side{background:var(--panel);padding:2rem;border-radius:4px}
+.about-side dt{
+  font-family:'Archivo',sans-serif;
+  font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:600;
+  margin-top:1.4rem;margin-bottom:0.25rem;
+}
+.about-side dt:first-child{margin-top:0}
+.about-side dd{
+  font-family:'Archivo',sans-serif;
+  font-size:1rem;color:var(--ink);font-weight:500;
+  line-height:1.4;letter-spacing:-0.005em;
+}
+.about-side dd .accent{color:var(--accent)}
+
+/* ====== WORK ARCHIVE ====== */
+.archive{padding:6rem 2rem;background:var(--panel)}
+.archive-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.archive-head h2{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,5rem);font-weight:400;letter-spacing:-0.03em}
+.archive-head h2 .it{font-style:italic;color:var(--accent)}
+.archive-head .count{font-family:'JetBrains Mono',monospace;font-size:0.8rem;letter-spacing:0.2em;color:var(--ink-dim);text-transform:uppercase}
+
+.work-row{
+  display:grid;grid-template-columns:60px 140px 1fr auto 40px;
+  gap:2rem;align-items:center;
+  padding:2rem 0;border-top:1px solid var(--line);
+  transition:all 0.3s;position:relative;
+  text-decoration:none;color:var(--ink);
+}
+.work-row:last-child{border-bottom:1px solid var(--line)}
+.work-row:hover{padding-left:1rem}
+.work-row:hover .w-title{color:var(--accent)}
+.work-row:hover .w-arrow{transform:translateX(6px);color:var(--accent)}
+.w-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:2rem;color:var(--ink-dim)}
+.w-cat{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim)}
+.w-title{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);line-height:1.15;font-weight:400;letter-spacing:-0.015em;transition:color 0.3s}
+.w-title .it{font-style:italic}
+.w-year{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--ink-dim);letter-spacing:0.1em}
+.w-arrow{font-size:1.5rem;color:var(--ink-dim);transition:all 0.3s}
+
+/* ====== CTA BLOCK ====== */
+.cta-block{padding:8rem 2rem;text-align:center;position:relative}
+.cta-block h2{font-family:'DM Serif Display',serif;font-size:clamp(3rem,9vw,8rem);line-height:0.95;font-weight:400;letter-spacing:-0.04em;margin-bottom:3rem}
+.cta-block h2 .it{font-style:italic;color:var(--accent)}
+.cta-block .sub{font-size:1.1rem;color:var(--ink-dim);max-width:50ch;margin:0 auto 3rem;line-height:1.5}
+.cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ====== FOOTER ====== */
+footer{background:var(--bg);padding:4rem 2rem 2rem;border-top:1px solid var(--line)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
+.footer-brand{font-family:'DM Serif Display',serif;font-size:2.5rem;font-style:italic;color:var(--accent);line-height:1}
+.footer-brand span{display:block;font-family:'Archivo',sans-serif;font-style:normal;font-size:0.75rem;color:var(--ink-dim);letter-spacing:0.25em;text-transform:uppercase;margin-top:0.5rem;font-weight:500}
+footer h4{font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:1rem;font-weight:600}
+footer a{display:block;color:var(--ink);text-decoration:none;padding:0.2rem 0;font-size:0.9rem;transition:color 0.2s}
+footer a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid var(--line);padding-top:2rem;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--ink-dim);letter-spacing:0.1em;flex-wrap:wrap;gap:1rem}
+
+/* ============================================
+   INNER PAGE STYLES (About, Projects, etc.)
+   ============================================ */
+
+/* Page hero (non-home) */
+.page-hero{padding:10rem 2rem 4rem;border-bottom:1px solid var(--line)}
+.page-hero .kicker{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.page-hero h1{
+  font-family:'DM Serif Display',serif;font-weight:400;
+  font-size:clamp(3.5rem,10vw,9rem);line-height:0.9;
+  letter-spacing:-0.035em;margin-bottom:1.5rem;
+}
+.page-hero h1 .it{font-style:italic;color:var(--accent)}
+.page-hero .subtitle{font-size:1.2rem;line-height:1.5;max-width:60ch;color:var(--ink-dim)}
+
+/* About page specific */
+.about-page .long{padding:5rem 2rem;max-width:1400px;margin:0 auto}
+.about-page .long-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start}
+.about-page .long-grid .label{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);position:sticky;top:7rem}
+.about-page .long-grid .body{font-size:1.25rem;line-height:1.6;color:var(--ink)}
+.about-page .long-grid .body p+p{margin-top:1.5rem}
+.about-page .long-grid .body .pull{font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);font-size:1.4rem;line-height:1.3;display:block;margin:1.5rem 0;padding-left:1.5rem;border-left:2px solid var(--accent)}
+
+/* Values / how I work grid */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.value-card{background:var(--panel);padding:2rem;border-radius:4px;border-top:2px solid var(--accent)}
+.value-card .num{font-family:'DM Serif Display',serif;font-style:italic;font-size:2.5rem;color:var(--accent);line-height:1}
+.value-card h4{font-family:'DM Serif Display',serif;font-size:1.5rem;font-weight:400;margin:0.5rem 0 0.8rem;letter-spacing:-0.01em}
+.value-card p{font-size:0.95rem;line-height:1.55;color:var(--ink)}
+
+/* Timeline */
+.timeline{padding:5rem 2rem;max-width:1400px;margin:0 auto;border-top:1px solid var(--line)}
+.timeline-item{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2.5rem 0;border-top:1px solid var(--line);align-items:baseline}
+.timeline-item:first-of-type{border-top:none}
+.timeline-item .when{font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:0.1em;color:var(--accent)}
+.timeline-item h3{font-family:'DM Serif Display',serif;font-size:1.8rem;font-weight:400;line-height:1.2;margin-bottom:0.25rem;letter-spacing:-0.015em}
+.timeline-item h3 .it{font-style:italic}
+.timeline-item .where{font-size:0.9rem;color:var(--ink-dim);margin-bottom:0.8rem}
+.timeline-item p{font-size:1rem;line-height:1.55;color:var(--ink);max-width:65ch}
+
+/* Projects index page */
+.proj-index{padding:3rem 2rem;max-width:1400px;margin:0 auto}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.proj-card{
+  background:var(--panel);padding:3rem 2.5rem;border-radius:4px;
+  text-decoration:none;color:var(--ink);position:relative;
+  transition:all 0.3s;overflow:hidden;
+  display:flex;flex-direction:column;min-height:320px;
+}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.proj-card:hover::before{transform:scaleX(1)}
+.proj-card:hover{background:#212120;transform:translateY(-4px)}
+.proj-card .cat{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.proj-card h3{font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:400;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.015em}
+.proj-card h3 .it{font-style:italic}
+.proj-card p{font-size:0.95rem;line-height:1.55;color:var(--ink-dim);margin-bottom:2rem;flex-grow:1}
+.proj-card .foot{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--ink-dim);letter-spacing:0.15em;text-transform:uppercase}
+.proj-card .foot .arrow{color:var(--accent);font-size:1.2rem;font-family:inherit}
+
+/* Single project page */
+.proj-page{padding:3rem 2rem;max-width:1100px;margin:0 auto}
+.proj-page .back{display:inline-flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim);text-decoration:none;margin-bottom:3rem;transition:color 0.2s}
+.proj-page .back:hover{color:var(--accent)}
+.proj-page .meta-row{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:2rem;font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-dim)}
+.proj-page .meta-row .item strong{color:var(--accent);font-weight:400;display:block;margin-bottom:0.2rem}
+.proj-page h1{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:0.95;letter-spacing:-0.03em;margin-bottom:1.5rem}
+.proj-page h1 .it{font-style:italic;color:var(--accent)}
+.proj-page .lead{font-size:1.3rem;line-height:1.5;color:var(--ink);max-width:60ch;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}
+.proj-page h2{font-family:'DM Serif Display',serif;font-size:2.2rem;font-weight:400;letter-spacing:-0.02em;margin:3rem 0 1.5rem;line-height:1.15}
+.proj-page h2 .it{font-style:italic;color:var(--accent)}
+.proj-page p{font-size:1.05rem;line-height:1.7;color:var(--ink);max-width:70ch;margin-bottom:1.2rem}
+.proj-page ul{max-width:70ch;margin-bottom:1.5rem}
+.proj-page li{font-size:1.05rem;line-height:1.65;color:var(--ink);margin-bottom:0.6rem;padding-left:1.5rem;position:relative}
+.proj-page li::before{content:'◆';position:absolute;left:0;color:var(--accent);font-size:0.7rem;top:0.4rem}
+.proj-page .callout{background:var(--panel);padding:2rem;border-left:3px solid var(--accent);margin:2rem 0;font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;line-height:1.4;color:var(--ink)}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin:2rem 0}
+.tag{display:inline-block;padding:0.4rem 0.9rem;border:1px solid var(--line-strong);border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-dim)}
+
+/* Project hero action button */
+.page-hero .hero-actions{margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+
+/* Live project / write-up block */
+.live-block{margin:4rem 0 2rem;background:var(--panel);border:1px solid var(--line-strong);border-radius:4px;padding:3rem;position:relative;overflow:hidden}
+.live-block::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent)}
+.live-inner{max-width:60ch}
+.live-kicker{font-family:'JetBrains Mono',monospace;font-size:0.75rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.live-block h3{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1.2rem;color:var(--ink)}
+.live-block h3 .it{font-style:italic;color:var(--accent)}
+.live-block p{font-size:1.05rem;line-height:1.65;color:var(--ink-dim);margin-bottom:2rem}
+.live-block .btn{margin-top:0.5rem}
+
+/* Resume page */
+.resume-page{padding:3rem 2rem;max-width:1100px;margin:0 auto}
+.resume-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+.resume-embed{width:100%;height:1100px;border:1px solid var(--line-strong);border-radius:4px;background:var(--panel)}
+
+/* Contact page */
+.contact-grid{padding:3rem 2rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-block h3{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;letter-spacing:-0.015em;margin-bottom:1.5rem}
+.contact-block h3 .it{font-style:italic;color:var(--accent)}
+.contact-list{display:grid;gap:1.5rem}
+.contact-item{display:flex;flex-direction:column;gap:0.3rem;padding:1.5rem;background:var(--panel);border-radius:4px;text-decoration:none;color:var(--ink);transition:all 0.2s}
+.contact-item:hover{background:#212120;transform:translateX(4px)}
+.contact-item .label{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent)}
+.contact-item .value{font-size:1.1rem;font-weight:500}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width:900px){
+  .hero-foot{grid-template-columns:1fr}
+  .hero-cta{align-items:flex-start}
+  .about-grid{grid-template-columns:1fr}
+  .work-row{grid-template-columns:auto 1fr auto;gap:1rem}
+  .w-cat,.w-year{display:none}
+  .nav-links{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .about-page .long-grid{grid-template-columns:1fr;gap:1rem}
+  .about-page .long-grid .label{position:static}
+  .values-grid{grid-template-columns:1fr}
+  .timeline-item{grid-template-columns:1fr;gap:0.5rem}
+  .proj-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .page-hero{padding-top:7rem}
+}
+
+@media (max-width:600px){
+  nav{padding:1rem}
+  .brand span:last-child{display:none}
+  .hero{padding:6rem 1.5rem 3rem}
+  .section,.archive,.cta-block{padding-left:1.5rem;padding-right:1.5rem}
+}
+
+/* ============================================
+   DATA GRAPHICS / INFOGRAPHICS
+   ============================================ */
+
+/* Workflow diagram (CRISPR) */
+.workflow{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:0;margin:3rem 0;
+  background:var(--panel);padding:2.5rem 2rem;border-radius:4px;
+  position:relative;
+}
+.workflow-step{
+  text-align:center;padding:0 0.5rem;position:relative;
+}
+.workflow-step:not(:last-child)::after{
+  content:'→';position:absolute;right:-0.4rem;top:0.8rem;
+  color:var(--accent);font-size:1.2rem;
+}
+.workflow-step .num{
+  display:inline-block;width:2.2rem;height:2.2rem;
+  border:1px solid var(--accent);border-radius:50%;
+  line-height:2.1rem;font-family:'DM Serif Display',serif;
+  font-style:italic;font-size:1rem;color:var(--accent);
+  margin-bottom:1rem;
+}
+.workflow-step h5{
+  font-family:'DM Serif Display',serif;font-size:1.05rem;
+  font-weight:400;letter-spacing:-0.01em;line-height:1.2;
+  margin-bottom:0.4rem;
+}
+.workflow-step p{
+  font-family:'Archivo',sans-serif;font-size:0.75rem;
+  color:var(--ink-dim);line-height:1.4;letter-spacing:0.02em;
+  margin:0;
+}
+
+/* Data chart (M4 protein) */
+.chart-card{
+  background:var(--panel);padding:2.5rem 2rem;border-radius:4px;
+  margin:3rem 0;
+}
+.chart-card .chart-title{
+  font-family:'DM Serif Display',serif;font-size:1.4rem;
+  font-weight:400;letter-spacing:-0.01em;margin-bottom:0.3rem;
+}
+.chart-card .chart-sub{
+  font-family:'Archivo',sans-serif;font-size:0.75rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--ink-dim);margin-bottom:2rem;
+}
+.bar-row{
+  display:grid;grid-template-columns:200px 1fr auto;
+  gap:1.5rem;align-items:center;margin-bottom:1.3rem;
+}
+.bar-label{
+  font-family:'Archivo',sans-serif;font-size:0.9rem;
+  color:var(--ink);font-weight:500;
+}
+.bar-label small{display:block;color:var(--ink-dim);font-weight:400;font-size:0.75rem;margin-top:0.15rem}
+.bar-track{
+  height:8px;background:rgba(255,255,255,0.06);
+  border-radius:999px;overflow:hidden;
+}
+.bar-fill{
+  height:100%;border-radius:999px;
+  background:var(--ink-dim);
+  animation:fillbar 1.5s cubic-bezier(.2,.8,.2,1) forwards;
+  transform:scaleX(0);transform-origin:left;
+}
+.bar-fill.accent{background:var(--accent)}
+@keyframes fillbar{to{transform:scaleX(1)}}
+.bar-value{
+  font-family:'DM Serif Display',serif;
+  font-size:1.4rem;letter-spacing:-0.02em;
+  color:var(--ink);min-width:4rem;text-align:right;
+}
+.bar-value.accent{color:var(--accent);font-style:italic}
+.chart-note{
+  font-size:0.85rem;color:var(--ink-dim);line-height:1.5;
+  padding-top:1.2rem;border-top:1px solid var(--line);
+  margin-top:1rem;max-width:60ch;
+}
+
+/* Comparison sheet (Regulatory) */
+.compare-sheet{
+  background:var(--panel);border-radius:4px;
+  margin:3rem 0;overflow:hidden;
+}
+.compare-head{
+  display:grid;grid-template-columns:200px 1fr 1fr;
+  gap:0;padding:1.5rem 2rem;
+  border-bottom:1px solid var(--line-strong);
+  font-family:'DM Serif Display',serif;
+}
+.compare-head .col-label{font-family:'Archivo',sans-serif;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-dim);font-weight:600}
+.compare-head .col-name{font-size:1.4rem;font-weight:400;letter-spacing:-0.01em}
+.compare-head .col-name em{font-style:italic;color:var(--accent)}
+.compare-head .col-sub{font-family:'Archivo',sans-serif;font-size:0.75rem;color:var(--ink-dim);margin-top:0.2rem;text-transform:none;letter-spacing:0}
+.compare-row{
+  display:grid;grid-template-columns:200px 1fr 1fr;gap:0;
+  padding:1.2rem 2rem;border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.compare-row:last-child{border-bottom:none}
+.compare-row .c-label{
+  font-family:'Archivo',sans-serif;font-size:0.7rem;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:600;padding-top:0.2rem;
+}
+.compare-row .c-value{
+  font-family:'Archivo',sans-serif;font-size:0.95rem;
+  color:var(--ink);line-height:1.5;font-weight:400;
+}
+
+/* Pipeline diagram (CurcuNano) */
+.pipeline{
+  background:var(--panel);padding:2.5rem 2rem;border-radius:4px;
+  margin:3rem 0;
+}
+.pipeline-stages{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+}
+.stage{
+  padding:1.5rem 1.2rem;border:1px solid var(--line-strong);
+  border-radius:4px;position:relative;
+}
+.stage.active{border-color:var(--accent);background:rgba(255,91,31,0.04)}
+.stage .stage-idx{
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:0.9rem;color:var(--accent);
+}
+.stage h5{
+  font-family:'DM Serif Display',serif;font-size:1.2rem;
+  font-weight:400;margin:0.5rem 0 0.3rem;letter-spacing:-0.01em;
+}
+.stage p{
+  font-family:'Archivo',sans-serif;font-size:0.8rem;
+  color:var(--ink-dim);line-height:1.5;margin:0;
+}
+.pipeline-footer{
+  font-family:'Archivo',sans-serif;font-size:0.8rem;
+  color:var(--ink-dim);letter-spacing:0.1em;margin-top:1.5rem;
+  padding-top:1.5rem;border-top:1px solid var(--line);text-align:center;
+}
+
+@media (max-width:900px){
+  .workflow{grid-template-columns:1fr;gap:2rem}
+  .workflow-step:not(:last-child)::after{content:'↓';right:auto;left:50%;top:auto;bottom:-1.5rem;transform:translateX(-50%)}
+  .bar-row{grid-template-columns:1fr;gap:0.5rem}
+  .compare-head,.compare-row{grid-template-columns:1fr;gap:0.5rem}
+  .pipeline-stages{grid-template-columns:1fr}
+}
+
+/* ============================================
+   PROJECT CODENAMES
+   ============================================ */
+
+/* In the work archive list (homepage) */
+.w-code{
+  font-family:'DM Serif Display',serif;
+  font-style:italic;font-size:1.1rem;
+  color:var(--accent);letter-spacing:-0.01em;
+  line-height:1.2;
+}
+.w-code small{
+  display:block;font-family:'Archivo',sans-serif;font-style:normal;
+  font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--ink-dim);margin-top:0.2rem;font-weight:500;
+}
+
+/* In project cards (projects.html) */
+.proj-code{
+  display:flex;align-items:baseline;gap:0.6rem;margin-bottom:1.5rem;
+}
+.proj-code .code-name{
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:1.5rem;color:var(--accent);letter-spacing:-0.01em;
+  line-height:1;
+}
+.proj-code .code-meta{
+  font-family:'JetBrains Mono',monospace;font-size:0.7rem;
+  letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-dim);
+}
+
+/* On individual project pages (above h1) */
+.code-stamp{
+  display:inline-flex;align-items:baseline;gap:0.8rem;margin-bottom:1.5rem;
+}
+.code-stamp .stamp-label{
+  font-family:'Archivo',sans-serif;font-size:0.7rem;
+  letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--ink-dim);font-weight:600;
+}
+.code-stamp .stamp-name{
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:1.8rem;color:var(--accent);letter-spacing:-0.01em;
+  line-height:1;
+}
+
+/* ============================================
+   LESSONS (homepage About section)
+   Editorial numbered list, not cards
+   ============================================ */
+.lessons-intro{
+  font-size:1.15rem;line-height:1.6;color:var(--ink-dim);
+  max-width:55ch;margin-bottom:3rem;
+}
+.lessons-intro em{font-family:'DM Serif Display',serif;font-style:italic;color:var(--ink)}
+.lesson-row{
+  display:grid;grid-template-columns:70px 1fr;gap:2rem;
+  padding:2.2rem 0;border-top:1px solid var(--line);
+  align-items:start;
+}
+.lesson-row:last-child{border-bottom:1px solid var(--line)}
+.lesson-row .ln-num{
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:2.5rem;color:var(--accent);line-height:0.85;
+  letter-spacing:-0.02em;
+}
+.lesson-row h4{
+  font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,2.2vw,1.8rem);
+  font-weight:400;letter-spacing:-0.015em;line-height:1.2;
+  margin-bottom:0.7rem;
+}
+.lesson-row h4 .it{font-style:italic;color:var(--accent)}
+.lesson-row p{
+  font-size:1rem;line-height:1.6;color:var(--ink);
+  max-width:55ch;
+}
+
+@media (max-width:900px){
+  .lesson-row{grid-template-columns:1fr;gap:0.5rem}
+}
+
+/* ============================================
+   INLINE PULL QUOTE (Direction section)
+   ============================================ */
+.pull-inline{
+  font-family:'DM Serif Display',serif;
+  font-style:italic;color:var(--accent);
+}

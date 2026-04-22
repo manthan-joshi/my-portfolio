@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M4 Membrane Protein Thesis — Manthan Joshi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand"><span class="mark">M</span><span>MANTHAN JOSHI</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Index</a>    <a href="../projects.html" class="current">Work</a>
+    <a href="../resume.html">Résumé</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="kicker">§ Work / 04</div>
+  <div class="code-stamp"><span class="stamp-label">Code</span><span class="stamp-name">M4</span></div>
+  <h1>Solubilization and purification of <span class="it">M4 membrane protein.</span></h1>
+  <p class="subtitle">Undergraduate thesis at Tranalab, Centre for Human Genetics, Bangalore. Optimized the expression and purification of a stubborn recombinant membrane protein domain, and won first rank in the 2019 batch for it.</p>
+</section>
+
+<article class="proj-page">
+  <a href="../projects.html" class="back">← Back to all work</a>
+
+  <div class="meta-row">
+    <div class="item"><strong>Institution</strong>Manipal Institute of Technology</div>
+    <div class="item"><strong>Lab</strong>Tranalab Pvt Ltd</div>
+    <div class="item"><strong>When</strong>Jan to June 2023</div>
+    <div class="item"><strong>Award</strong>First rank, 2019 batch</div>
+  </div>
+
+  <p class="lead">Imagine trying to work with a protein so stubborn it refuses to dissolve. That was my thesis. M4 is a recombinant membrane protein domain, and the existing protocols weren't getting enough of it out of inclusion bodies in a usable form.</p>
+
+  <h2>The <span class="it">problem</span></h2>
+  <p>M4 is a membrane protein domain with roles in immune response modulation, cell adhesion, and signaling. It has therapeutic and diagnostic relevance. But membrane proteins are a pain to purify. Expression in E. coli pushes the protein into inclusion bodies, insoluble aggregates that require aggressive solubilization and refolding to recover functional protein.</p>
+  <p>Previous protocols got low yields and incomplete solubilization. The thesis was an attempt to fix that.</p>
+
+  <h2>What I <span class="it">did</span></h2>
+  <ul>
+    <li>Prepared competent E. coli BL21(DE3) cells and transformed them with the M4-containing plasmid</li>
+    <li>Induced protein expression with IPTG (0.5 to 1 mM), then harvested and sonicated to release inclusion bodies</li>
+    <li>Ran two different solubilization conditions in parallel. Condition 1 used 8M urea and 20mM imidazole. Condition 2 added 1% Triton X-100 and 1% Tween 20 on top</li>
+    <li>Purified solubilized protein via Ni-NTA affinity chromatography with stepwise urea washes (6M, 4M, 2M) followed by 500mM imidazole elution</li>
+    <li>Dialyzed eluted fractions against 20mM Tris / 20mM NaCl to remove imidazole and exchange buffer</li>
+    <li>Tested refolding by sugar affinity chromatography under three different elution conditions</li>
+    <li>Quantified protein yield at A280 using Nanodrop and validated purity with SDS-PAGE</li>
+  </ul>
+
+  <h2>The <span class="it">finding</span></h2>
+  <p>Adding Triton X-100 and Tween 20 to the urea-based solubilization buffer materially improved yield. Condition 2 gave an A280 of 0.68, versus 0.46 for Condition 1 alone. That translated to roughly 2 μM of purified M4 under Condition 2 versus 1.37 μM under Condition 1, a meaningful improvement for downstream characterization work.</p>
+
+  <div class="chart-card">
+    <div class="chart-title">A<sub>280</sub> absorbance after dialysis</div>
+    <div class="chart-sub">M4 protein, Ni-NTA purified and dialyzed</div>
+
+    <div class="bar-row">
+      <div class="bar-label">Condition 1<small>8M urea + imidazole</small></div>
+      <div class="bar-track"><div class="bar-fill" style="width:67.6%"></div></div>
+      <div class="bar-value">0.46</div>
+    </div>
+
+    <div class="bar-row">
+      <div class="bar-label">Condition 2<small>+ Triton X-100 + Tween 20</small></div>
+      <div class="bar-track"><div class="bar-fill accent" style="width:100%"></div></div>
+      <div class="bar-value accent">0.68</div>
+    </div>
+
+    <p class="chart-note">Translating A<sub>280</sub> to protein concentration using ε = 95,965 M<sup>-1</sup>cm<sup>-1</sup>: Condition 1 yielded ~1.37 μM (47.95 ng/μL), Condition 2 yielded ~2.03 μM (71.05 ng/μL). A ~48% improvement from detergent addition alone.</p>
+  </div>
+
+  <div class="callout">
+    The result that felt most real was also the most mundane: adding the right detergent got the protein out. Not every good science finding is glamorous.
+  </div>
+
+  <h2>What <span class="it">didn't work</span></h2>
+  <p>The sugar affinity chromatography for refolding assessment was stubborn. Even with 1M sugar in the elution buffer, M4 wouldn't release cleanly from the resin. This is documented honestly in the thesis as a deviation from expected results, with a proposed follow-up on alternative elution strategies.</p>
+
+  <h2>Techniques <span class="it">used</span></h2>
+  <div class="tag-row">
+    <span class="tag">E. coli BL21(DE3)</span>
+    <span class="tag">IPTG induction</span>
+    <span class="tag">Bacterial transformation</span>
+    <span class="tag">Sonication</span>
+    <span class="tag">Ni-NTA chromatography</span>
+    <span class="tag">SDS-PAGE</span>
+    <span class="tag">Dialysis</span>
+    <span class="tag">Nanodrop quantification</span>
+    <span class="tag">Sugar affinity chromatography</span>
+    <span class="tag">Inclusion body solubilization</span>
+  </div>
+
+  <p style="margin-top:2rem">
+    <a href="../undergrad-thesis.pdf" class="btn btn-primary" target="_blank">Read Full Thesis (PDF) →</a>
+  </p>
+
+  <a href="../projects.html" class="back" style="margin-top:3rem">← Back to all work</a>
+</article>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">Manthan <em>Joshi.</em><span>CGT / Boston / 2026</span></div>
+    <div>
+      <h4>Navigate</h4>
+      <a href="../index.html">Home</a>      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="mailto:manthan2001@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/manthansjoshi/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/manthan-joshi" target="_blank">GitHub</a>
+    </div>
+    <div>
+      <h4>Based in</h4>
+      <a>Boston, Massachusetts</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 MANTHAN SHRIRAM JOSHI</div>
+    <div>DESIGNED IN BOSTON</div>
+  </div>
+</footer>
+
+</body>
+</html>
