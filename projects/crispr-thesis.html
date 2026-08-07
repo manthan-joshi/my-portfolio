@@ -15,6 +15,7 @@
   <a href="../index.html" class="brand"><span class="mark">M</span><span>MANTHAN JOSHI</span></a>
   <div class="nav-links">
     <a href="../index.html">Index</a>    <a href="../projects.html" class="current">Work</a>
+    <a href="../ongoing.html">Ongoing</a>
     <a href="../resume.html">Résumé</a>
     <a href="../contact.html">Contact</a>
   </div>
@@ -24,9 +25,10 @@
   <div class="kicker">§ Work / 01</div>
   <div class="code-stamp"><span class="stamp-label">Code</span><span class="stamp-name">HPRT1</span></div>
   <h1>CRISPR/Cas9 knock-in and knock-out <span class="it">in CHO cells.</span></h1>
-  <p class="subtitle">A full genome editing workflow at the HPRT1 locus, from Cas9 RNP design through Sanger sequencing and ICE-based INDEL analysis. Graduate research at Northeastern, fall 2025.</p>
+  <p class="subtitle">A full genome editing workflow at the HPRT1 locus, from Cas9 RNP design through selection and Sanger validation. Graduate research at Northeastern, fall 2025. The editing arm never returned a confirmed result, and working out why turned into the more useful half of the project.</p>
   <div class="hero-actions">
-    <a href="https://manthan-joshi.github.io/CRISPR-Project/" target="_blank" rel="noopener" class="btn btn-primary">View Project Write-up ↗</a>
+    <a href="pd-report.html" class="btn btn-primary">Read the PD Report →</a>
+    <a href="https://manthan-joshi.github.io/CRISPR-Project/" target="_blank" rel="noopener" class="btn btn-ghost">Project Write-up ↗</a>
   </div>
 </section>
 
@@ -40,7 +42,7 @@
     <div class="item"><strong>Target</strong>HPRT1 locus</div>
   </div>
 
-  <p class="lead">The point of this project was to take a CHO cell line through a complete CRISPR editing and validation workflow, not just the flashy part with the scissors.</p>
+  <p class="lead">The point of this project was to take a CHO cell line through a complete CRISPR editing and validation workflow, not just the flashy part with the scissors. We got through the whole workflow. What we did not get was a confirmed edit, and the reason turned out to sit in the assay rather than in the biology.</p>
 
   <div class="workflow">
     <div class="workflow-step">
@@ -60,13 +62,13 @@
     </div>
     <div class="workflow-step">
       <div class="num">IV</div>
-      <h5>PCR</h5>
-      <p>Amplify across the edit site</p>
+      <h5>Selection</h5>
+      <p>6-TG and puromycin kill curves</p>
     </div>
     <div class="workflow-step">
       <div class="num">V</div>
       <h5>Sanger + ICE</h5>
-      <p>INDEL quantification</p>
+      <p>Sequence-level validation</p>
     </div>
   </div>
 
@@ -74,15 +76,20 @@
   <p>CHO cells are the workhorse of biologics manufacturing, responsible for the majority of recombinant therapeutic proteins on the market. Being able to confidently edit them with CRISPR and verify the edit actually happened is foundational work for any biotech that wants to modify a production line, knock out a problematic gene, or introduce a new one.</p>
   <p>HPRT1 is a classic selection marker locus. Edits at HPRT1 can be selected using 6-TG or HAT media, which made it the right choice for a project focused on methodology rather than therapeutic payload.</p>
 
-  <h2>What I <span class="it">actually did</span></h2>
+  <h2>What we <span class="it">actually did</span></h2>
   <ul>
-    <li>Designed the full experimental workflow for CRISPR/Cas9 editing at HPRT1, including guide selection and validation strategy</li>
-    <li>Prepared Cas9 ribonucleoprotein (RNP) complexes and transfected CHO cells using CRISPRmax</li>
-    <li>Ran the complete downstream validation: genomic DNA extraction, PCR amplification across the edit site, agarose gel electrophoresis, and Nanodrop quantification</li>
-    <li>Performed Sanger sequencing of PCR products and used ICE (Inference of CRISPR Edits) analysis to quantify INDEL rates</li>
-    <li>Ran the plasmid engineering side in parallel: bacterial transformation, colony screening, plasmid purification, and restriction enzyme digest verification using NotI and EcoRV</li>
-    <li>Managed the CHO cell culture throughout: seeding, passaging, cryopreservation, and puromycin selection optimized via CellTiter-Glo viability assay</li>
+    <li>Designed the full experimental workflow for CRISPR/Cas9 editing at HPRT1, including guide selection and the validation strategy</li>
+    <li>Assembled Cas9 ribonucleoprotein complexes at roughly a 1:1 Cas9 to guide molar ratio and transfected adherent CHO cells using CRISPRmax</li>
+    <li>Built and ran 8-point, 3-fold serial kill curves in duplicate for both 6-TG and puromycin on a CellTiter-Glo readout, to set the selection window</li>
+    <li>Ran the downstream train: genomic DNA extraction, Phusion PCR across the edit site, agarose gel electrophoresis, amplicon clean-up and Nanodrop QC, then bidirectional Sanger sequencing and ICE</li>
+    <li>Ran the plasmid engineering side in parallel: bacterial transformation, colony screening, plasmid purification, and a NotI and EcoRV restriction digest</li>
+    <li>Managed the CHO culture throughout: seeding, serial passaging, cryopreservation and selection</li>
   </ul>
+
+  <h2>Where it <span class="it">broke</span></h2>
+  <p>Both kill curves came back flat. 6-TG relative viability sat between 96.2% and 103.1% across all eight concentrations, and puromycin only reached 74.3% at the top of the range. The entire dataset, both plates, spans 0.042 to 0.069 RLU, which is the real tell. Two unrelated cytotoxic agents failing identically inside one narrow signal band is an assay problem, not a biology problem.</p>
+  <p>With no dose response to read, the selection concentration was taken from the middle of the range rather than derived from the curve. Seven days later the no-transfection control was still alive.</p>
+  <p>Sanger returned unreadable traces and ICE failed at the control file, which blocks every sample in the batch, so no indel rate was ever produced. On the digest, NotI cut and EcoRV did not, leaving construct identity unconfirmed. Supercoiled DNA runs ahead of linear, so the upward band shift in the NotI lane is what a successful cut looks like, and reading that correctly took a second pass. The knock-in arm was lost to microbial contamination before it generated data.</p>
 
   <div class="callout">
     Everyone can run a transfection. The value is in the downstream: what did you actually edit, and how confident are you that you edited it?
@@ -94,26 +101,27 @@
     <span class="tag">Cas9 RNP</span>
     <span class="tag">CRISPRmax</span>
     <span class="tag">Mammalian cell culture</span>
-    <span class="tag">PCR</span>
+    <span class="tag">Kill curve design</span>
+    <span class="tag">CellTiter-Glo</span>
+    <span class="tag">Phusion PCR</span>
     <span class="tag">Sanger sequencing</span>
-    <span class="tag">ICE analysis</span>
+    <span class="tag">ICE workflow</span>
     <span class="tag">Plasmid cloning</span>
     <span class="tag">Restriction digest</span>
-    <span class="tag">CellTiter-Glo</span>
     <span class="tag">Puromycin selection</span>
-    <span class="tag">Western blot</span>
   </div>
 
   <h2>What I took <span class="it">from it</span></h2>
   <p>The biggest thing this project taught me was how much genome editing work is actually careful validation work. The edit is the easy part. Trusting that the edit happened, at the right place, with the expected frequency, is where real scientific discipline shows up.</p>
-  <p>This is also the project I can talk through most fluently in an interview. For a deeper walk-through, from guide design to ICE readouts and troubleshooting calls, the full project write-up is linked below.</p>
+  <p>Which is what happened next. I went back to the raw plate data and rebuilt the whole workflow as a process development report: unit operations and in-process controls, CQAs and CPPs, eight numbered deviations with CAPA, a qualification plan for the readout that failed us, and a screening design for doing the delivery step properly. That document is the better half of this project and it is linked below.</p>
+  <p>It is also the project I can talk through most fluently in an interview, for exactly that reason.</p>
 
   <div class="live-block">
     <div class="live-inner">
-      <div class="live-kicker">§ Project Write-up</div>
-      <h3>The full methodology, principles, and <span class="it">troubleshooting breakdown.</span></h3>
-      <p>A deeper look at the workflow: Cas9 RNP assembly, CRISPRmax transfection, HPRT1 guide design rationale, Sanger and ICE validation, restriction digest strategy, and the decisions made at each step.</p>
-      <a href="https://manthan-joshi.github.io/CRISPR-Project/" target="_blank" rel="noopener" class="btn btn-primary">Open the write-up ↗</a>
+      <div class="live-kicker">§ Follow-up</div>
+      <h3>The same run, <span class="it">audited properly.</span></h3>
+      <p>22 pages treating this workflow as a characterization run assessed against acceptance criteria. Eleven unit operations, a CQA and CPP criticality table, eight numbered deviations with root cause and CAPA, an ICH Q2 fit-for-purpose qualification plan for the CellTiter-Glo readout, and a resolution IV screening design over the delivery parameters.</p>
+      <a href="pd-report.html" class="btn btn-primary">Read the PD report →</a>
     </div>
   </div>
 

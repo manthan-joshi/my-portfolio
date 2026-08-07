@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPRT1 Process Development Report — Manthan Joshi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand"><span class="mark">M</span><span>MANTHAN JOSHI</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Index</a>    <a href="../projects.html" class="current">Work</a>
+    <a href="../ongoing.html">Ongoing</a>
+    <a href="../resume.html">Résumé</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="kicker">§ Work / 09</div>
+  <div class="code-stamp"><span class="stamp-label">Code</span><span class="stamp-name">Deviation</span></div>
+  <h1>The run failed. <span class="it">That's the finding.</span></h1>
+  <p class="subtitle">A 22 page process development report rebuilding a CRISPR/Cas9 HPRT1 workflow as a characterization run. Unit operations, deviations and CAPA, an ICH Q2 qualification plan, and a screening design. Written from the raw plate data.</p>
+</section>
+
+<article class="proj-page">
+  <a href="../projects.html" class="back">← Back to all work</a>
+
+  <div class="meta-row">
+    <div class="item"><strong>Format</strong>Process development report</div>
+    <div class="item"><strong>Source data</strong>CHO HPRT1 module, fall 2025</div>
+    <div class="item"><strong>Written</strong>August 2026</div>
+    <div class="item"><strong>Length</strong>22 pages</div>
+  </div>
+
+  <p class="lead">In fall 2025 we ran a CRISPR/Cas9 knockout and knock-in at the HPRT1 locus in CHO cells. The editing arm never produced a confirmed result. Months later I went back to the raw plate data and rebuilt the whole thing as a process development report, because the interesting question was never whether the edit worked. It was why the experiment couldn't tell us either way.</p>
+
+  <h2>What the data <span class="it">actually said</span></h2>
+  <p>The selection step ran two kill curves, both 8 point, 3-fold serial dilutions in duplicate on a CellTiter-Glo readout. Neither produced a dose response. 6-TG relative viability sat between 96.2% and 103.1% across every concentration tested. Puromycin ran the same design and only reached 74.3% viability at the top of the range, at a dose that should have cleared the plate outright.</p>
+  <p>The tell is in the raw signal. Every well on both plates, live or dead, drug or vehicle, falls inside 0.042 to 0.069 RLU. Two unrelated cytotoxic agents failing in identical fashion inside the same narrow band doesn't point at the biology. It points at the readout.</p>
+
+  <div class="compare-sheet">
+    <div class="compare-head">
+      <div class="col-label">Check</div>
+      <div class="col-name"><em>Expected</em><div class="col-sub">If the assay could resolve</div></div>
+      <div class="col-name">Observed<div class="col-sub">From the raw plate data</div></div>
+    </div>
+    <div class="compare-row">
+      <div class="c-label">6-TG curve</div>
+      <div class="c-value">Clear dose response, near total kill at the top dose</div>
+      <div class="c-value">96.2% to 103.1% viability across all eight points</div>
+    </div>
+    <div class="compare-row">
+      <div class="c-label">Puromycin curve</div>
+      <div class="c-value">Plate cleared well before the top dose</div>
+      <div class="c-value">74.3% viability at the top dose</div>
+    </div>
+    <div class="compare-row">
+      <div class="c-label">Signal range</div>
+      <div class="c-value">Live and dead wells clearly separated</div>
+      <div class="c-value">Everything inside 0.042 to 0.069 RLU</div>
+    </div>
+    <div class="compare-row">
+      <div class="c-label">Z-factor, puromycin</div>
+      <div class="c-value">0.5 or better</div>
+      <div class="c-value">Approximately 0.27</div>
+    </div>
+    <div class="compare-row">
+      <div class="c-label">Z-factor, 6-TG</div>
+      <div class="c-value">0.5 or better</div>
+      <div class="c-value">Not computable, no separation to measure</div>
+    </div>
+    <div class="compare-row">
+      <div class="c-label">Negative control</div>
+      <div class="c-value">Untransfected cells die under selection</div>
+      <div class="c-value">Survived seven days of selection</div>
+    </div>
+  </div>
+
+  <h2><span class="it">Root cause</span></h2>
+  <p>No no-cell blank and no full-kill control were run on either plate, so the background floor was never established. Without a floor you cannot tell a dead well from a live one, and every number downstream inherits that.</p>
+  <p>Because the curve had nothing to give, the selection concentration was taken from the middle of the range rather than derived from the data. Seven days at that concentration with no medium exchange, and the no-transfection control was still alive. The control that was supposed to die first didn't die at all.</p>
+  <p>Downstream, Sanger returned unreadable traces and ICE failed at the control file, which blocks every sample in the batch. On the plasmid side NotI cut and EcoRV did not, so construct identity stayed unconfirmed. The knock-in arm was lost to microbial contamination before it generated data.</p>
+  <p>Every one of those is a separate problem, but they sit on top of a single deviation: the readout was never qualified before it was used to make a decision.</p>
+
+  <div class="callout">
+    A flat curve isn't a result. It's an instrument telling you it couldn't see anything, and the whole job is noticing the difference.
+  </div>
+
+  <h2>What the report <span class="it">does</span></h2>
+  <p>The report treats the workflow as a characterization run assessed against acceptance criteria rather than as a lab exercise that happened to go wrong.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="num">I</div>
+      <h5>Process Map</h5>
+      <p>Eleven unit operations with in-process controls</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">II</div>
+      <h5>CQA and CPP</h5>
+      <p>Quality target profile and criticality table</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">III</div>
+      <h5>Deviations</h5>
+      <p>Eight numbered, each with root cause and CAPA</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">IV</div>
+      <h5>Qualification</h5>
+      <p>ICH Q2 fit-for-purpose plan for the readout</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">V</div>
+      <h5>Screening Design</h5>
+      <p>Resolution IV factorial over delivery parameters</p>
+    </div>
+  </div>
+
+  <p>The qualification section is written against ICH Q2 principles and covers accuracy, precision, range and system suitability for the CellTiter-Glo readout, with the acceptance criteria that would have caught this before selection ran. The screening design is a resolution IV fractional factorial across six delivery parameters, with a face-centered central composite as the optimization follow-on.</p>
+
+  <h2>What I'd <span class="it">change</span></h2>
+  <ul>
+    <li>Qualify the readout before the readout makes a decision. A no-cell blank and a full-kill control on every plate, with Z-factor computed and passing before anything downstream runs</li>
+    <li>Derive the selection concentration from the curve. If the curve is flat, the answer is to fix the assay, not to pick a number out of the middle of the range</li>
+    <li>Exchange selection medium rather than leaving cells for seven days, so drug depletion isn't confounded with drug resistance</li>
+    <li>Screen the delivery parameters as a factorial instead of one factor at a time. Cas9 to guide ratio, lipid volume, complexation time, cell density, payload mass and incubation window all interact, and sequential single-variable runs cannot see that</li>
+    <li>Gate Sanger submission on amplicon purity rather than submitting everything and hoping. One amplicon went out at A260/230 of 0.68</li>
+    <li>Run pooled and at scale rather than one locus at a time</li>
+  </ul>
+
+  <h2>Why this is the project <span class="it">I talk about</span></h2>
+  <p>Every process fails somewhere. What an employer is actually buying is not a clean result, it's the ability to work out which step lost the information and what to change so it doesn't happen twice.</p>
+  <p>A clean result proves you can follow a protocol. A properly dissected failure proves you can run a process. This report is the second thing, and it's the document I'd rather be judged on.</p>
+
+  <h2>Concepts and <span class="it">tools</span></h2>
+  <div class="tag-row">
+    <span class="tag">Process development</span>
+    <span class="tag">CQA / CPP</span>
+    <span class="tag">Deviation and CAPA</span>
+    <span class="tag">ICH Q2 qualification plan</span>
+    <span class="tag">Resolution IV screening design</span>
+    <span class="tag">Z-factor</span>
+    <span class="tag">CellTiter-Glo</span>
+    <span class="tag">Kill curve design</span>
+    <span class="tag">CRISPR/Cas9</span>
+    <span class="tag">CHO cell culture</span>
+    <span class="tag">Root cause analysis</span>
+  </div>
+
+  <div class="live-block">
+    <div class="live-inner">
+      <div class="live-kicker">§ Source Project</div>
+      <h3>The run this report <span class="it">was written about.</span></h3>
+      <p>The original HPRT1 workflow, from guide design through Cas9 RNP assembly, CRISPRmax transfection, selection and the downstream validation train. Worth reading first if you want the experiment before the audit.</p>
+      <a href="crispr-thesis.html" class="btn btn-primary">See the HPRT1 project →</a>
+    </div>
+  </div>
+
+  <p><em>Note:</em> this was a two-student graduate lab module run on protocols we did not write. The report is written about the process, not about people, and my lab partner and the teaching staff are credited on its title page.</p>
+
+  <a href="../projects.html" class="back" style="margin-top:3rem">← Back to all work</a>
+</article>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">Manthan <em>Joshi.</em><span>CGT / Boston / 2026</span></div>
+    <div>
+      <h4>Navigate</h4>
+      <a href="../index.html">Home</a>      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="mailto:manthan2001@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/manthansjoshi/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/manthan-joshi" target="_blank">GitHub</a>
+    </div>
+    <div>
+      <h4>Based in</h4>
+      <a>Boston, Massachusetts</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 MANTHAN SHRIRAM JOSHI</div>
+    <div>DESIGNED IN BOSTON</div>
+  </div>
+</footer>
+
+</body>
+</html>
