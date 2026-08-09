@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRISPR/Cas9 in CHO Cells — Manthan Joshi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand"><span class="mark">M</span><span>MANTHAN JOSHI</span></a>
+  <div class="nav-links">
+    <a href="../index.html">Index</a>    <a href="../projects.html" class="current">Work</a>
+    <a href="../ongoing.html">Ongoing</a>
+    <a href="../resume.html">Résumé</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="kicker">§ Work / 01</div>
+  <div class="code-stamp"><span class="stamp-label">Code</span><span class="stamp-name">HPRT1</span></div>
+  <h1>CRISPR/Cas9 knock-in and knock-out <span class="it">in CHO cells.</span></h1>
+  <p class="subtitle">A full genome editing workflow at the HPRT1 locus, from Cas9 RNP design through selection and Sanger validation. Graduate research at Northeastern, fall 2025. No confirmed edit came out of it. Tracing why, ten months later and against the raw files, turned into the more useful half of the project.</p>
+  <div class="hero-actions">
+    <a href="pd-report.html" class="btn btn-primary">Read the PD Report →</a>
+    <a href="https://manthan-joshi.github.io/CRISPR-Project/" target="_blank" rel="noopener" class="btn btn-ghost">Project Write-up ↗</a>
+  </div>
+</section>
+
+<article class="proj-page">
+  <a href="../projects.html" class="back">← Back to all work</a>
+
+  <div class="meta-row">
+    <div class="item"><strong>Role</strong>Graduate researcher</div>
+    <div class="item"><strong>Where</strong>Northeastern</div>
+    <div class="item"><strong>When</strong>Sept to Dec 2025</div>
+    <div class="item"><strong>Target</strong>HPRT1 locus</div>
+  </div>
+
+  <p class="lead">The point of this project was to take a CHO cell line through a complete CRISPR editing and validation workflow, not just the flashy part with the scissors. We got through the whole workflow. What we did not get was a confirmed edit, and the reason turned out to sit in the assay rather than in the biology.</p>
+
+  <div class="workflow">
+    <div class="workflow-step">
+      <div class="num">I</div>
+      <h5>Guide Design</h5>
+      <p>Target site selection at HPRT1 locus</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">II</div>
+      <h5>Cas9 RNP</h5>
+      <p>Ribonucleoprotein complex prep</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">III</div>
+      <h5>Transfection</h5>
+      <p>CRISPRmax into CHO cells</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">IV</div>
+      <h5>Selection</h5>
+      <p>6-TG kill curve and seven-day challenge</p>
+    </div>
+    <div class="workflow-step">
+      <div class="num">V</div>
+      <h5>Sanger + ICE</h5>
+      <p>Sequence-level validation</p>
+    </div>
+  </div>
+
+  <h2>Why <span class="it">this matters</span></h2>
+  <p>CHO cells are the workhorse of biologics manufacturing, responsible for the majority of recombinant therapeutic proteins on the market. Being able to confidently edit them with CRISPR and verify the edit actually happened is foundational work for any biotech that wants to modify a production line, knock out a problematic gene, or introduce a new one.</p>
+  <p>HPRT1 is a classic selection marker locus. Edits at HPRT1 can be selected using 6-TG or HAT media, which made it the right choice for a project focused on methodology rather than therapeutic payload.</p>
+
+  <h2>What we <span class="it">actually did</span></h2>
+  <ul>
+    <li>Designed the full experimental workflow for CRISPR/Cas9 editing at HPRT1, including guide selection and the validation strategy</li>
+    <li>Assembled Cas9 ribonucleoprotein complexes at roughly a 1:1 Cas9 to guide molar ratio and transfected adherent CHO cells using CRISPRmax</li>
+    <li>Built and ran 8-point, 3-fold serial kill curves in duplicate for both 6-TG and puromycin on a CellTiter-Glo readout, intended to set the selection window</li>
+    <li>Ran the downstream train: genomic DNA extraction, Phusion PCR across the edit site, agarose gel electrophoresis, amplicon clean-up and Nanodrop QC, then bidirectional Sanger sequencing and ICE</li>
+    <li>Ran the plasmid engineering side in parallel: bacterial transformation, colony screening, plasmid purification, and a NotI and EcoRV restriction digest</li>
+    <li>Managed the CHO culture throughout: seeding, serial passaging, cryopreservation and selection</li>
+  </ul>
+
+  <h2>Where it <span class="it">broke</span></h2>
+  <p>The 6-TG curve returned no dose response. Relative viability sat between 96.2% and 103.1% across a delivered range of 0.165 to 150 µM, and the lowest reading fell at the second-highest dose. The plate-wide coefficient of variation was 3.0%, with duplicate CVs between 1.1% and 5.3%. So the numbers were repeatable. They were repeatably measuring something that was not viability, and because they looked tidy nobody went back to check the assay.</p>
+  <p>A protocol deviation was recorded on the day. CellTiter-Glo calls for the medium to be aspirated and the wells rinsed twice with PBS before reagent goes in. That was not done. Cells killed over three to four days release ATP into the medium, the rinses exist to clear it, and without them the assay reports ATP from dead cells alongside live ones, which lifts the high-dose wells and flattens the gradient.</p>
+  <p>What made it undiagnosable at the time is that neither plate carried a no-cell blank or a full-kill control. Those two wells define the floor and the biological minimum, and without them no signal window and no Z-factor can be computed. Every well across both plates, two drugs and sixteen conditions, reported between 0.042 and 0.069, a 1.64-fold span across the entire dataset.</p>
+  <p>With no curve to read, the selection concentration was taken from the middle of the dilution series. Seven days later the untransfected control was not just alive, it was the most confluent well in the four-condition panel. Once a negative control survives, survival stops carrying information about the variable under test, and nothing downstream of that step can be interpreted.</p>
+
+  <h2>The part I keep <span class="it">coming back to</span></h2>
+  <p>The genotyping failed for a reason that had nothing to do with editing, and it is the clearest thing in the project.</p>
+  <p>Four amplicons went to Sanger. The NanoDrop read all four at similar concentrations. The agarose gel run on the same samples did not agree.</p>
+
+  <div class="chart-card">
+    <div class="chart-title">Same four amplicons, two measurements</div>
+    <div class="chart-sub">NanoDrop concentration, ng/µL · gel result beneath each label</div>
+    <div class="bar-row">
+      <div class="bar-label">No transfection<small>Gel: no amplification</small></div>
+      <div class="bar-track"><div class="bar-fill" style="width:86.5%"></div></div>
+      <div class="bar-value">26.3</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Control RNP<small>Gel: faint band</small></div>
+      <div class="bar-track"><div class="bar-fill" style="width:91.4%"></div></div>
+      <div class="bar-value">27.8</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">HPRT-RNP1<small>Gel: distinct band</small></div>
+      <div class="bar-track"><div class="bar-fill accent" style="width:100%"></div></div>
+      <div class="bar-value accent">30.4</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">HPRT-RNP2<small>Gel: distinct band</small></div>
+      <div class="bar-track"><div class="bar-fill accent" style="width:73.7%"></div></div>
+      <div class="bar-value accent">22.4</div>
+    </div>
+    <div class="chart-note">A NanoDrop reads total absorbance at 260 nm. Primers, free nucleotides and column carryover all absorb there, so it cannot tell amplicon from anything else in the tube. A gel separates by size and can. The two samples reading second and third highest are the two that produced almost no product.</div>
+  </div>
+
+  <p>Sequencing input was 25 ng per reaction, calculated from the NanoDrop number. For the two weakly amplified samples that calculation was applied to material that was largely not amplicon, so those reactions went out under-templated. The untransfected sample was then dropped from the submission and the control RNP amplicon, the faint band, became the reference ICE would align everything else against.</p>
+  <p>ICE recovered 65 bases of usable sequence from that control trace, bases 101 to 166, carrying about a dozen ambiguous calls. It has to locate the 20-base protospacer inside the control before it can decompose any sample. A 20-base sequence does not fit into a 65-base window that does not span the cut site, so the search failed and every sample in the batch failed with it. No indel rate exists for this campaign and none can be recovered from the traces.</p>
+  <p>We ran both measurements and wrote both down. They disagreed, and we went with the one that cannot tell amplicon from primer.</p>
+  <p>On the plasmid side the two in silico predictions, 9,809 bp for NotI and 9,997 bp for EcoRV, cannot both describe single cuts of one circular plasmid, so they came from two different sequence files. On the gel NotI cut and EcoRV did not. Supercoiled DNA runs ahead of linear, so the upward band shift in the NotI lane is what a successful cut looks like, and reading that correctly took a second pass. Construct identity is still unconfirmed.</p>
+
+  <div class="callout">
+    We had a gel saying one thing and a spectrophotometer saying another, and we went with the spectrophotometer.
+  </div>
+
+  <h2>Techniques <span class="it">used</span></h2>
+  <div class="tag-row">
+    <span class="tag">CRISPR/Cas9</span>
+    <span class="tag">Cas9 RNP</span>
+    <span class="tag">CRISPRmax</span>
+    <span class="tag">Mammalian cell culture</span>
+    <span class="tag">Kill curve design</span>
+    <span class="tag">CellTiter-Glo</span>
+    <span class="tag">Phusion PCR</span>
+    <span class="tag">Sanger sequencing</span>
+    <span class="tag">ICE workflow</span>
+    <span class="tag">Plasmid cloning</span>
+    <span class="tag">Restriction digest</span>
+    <span class="tag">Root cause analysis</span>
+  </div>
+
+  <h2>What I took <span class="it">from it</span></h2>
+  <p>The biggest thing this project taught me was how much genome editing work is actually careful validation work. The edit is the easy part. Trusting that the edit happened, at the right place, with the expected frequency, is where real scientific discipline shows up.</p>
+  <p>Which is what happened next. I went back to the raw plate data, the module protocols and the sequencing output and rebuilt the whole workflow twice: once as a process development report with unit operations, CQAs and CPPs, eight numbered deviations with CAPA, a qualification plan for the readout that failed us and a screening design for the delivery step, and once as a laboratory report in standard scientific format with a root cause section and a corrected protocol. Both are linked below.</p>
+  <p>It is also the project I can talk through most fluently in an interview, for exactly that reason.</p>
+
+  <div class="live-block">
+    <div class="live-inner">
+      <div class="live-kicker">§ Follow-up</div>
+      <h3>The same run, <span class="it">audited properly.</span></h3>
+      <p>32 pages treating this workflow as a characterization run assessed against acceptance criteria. Eight unit operations with in-process controls, a CQA and CPP criticality table, eight numbered deviations with root cause and CAPA, an ICH Q2 fit-for-purpose qualification plan for the CellTiter-Glo readout, and a resolution IV screening design over the delivery parameters. A companion 15-page laboratory report covers the same work in standard scientific format.</p>
+      <a href="pd-report.html" class="btn btn-primary">Read the PD report →</a>
+    </div>
+  </div>
+
+  <a href="../projects.html" class="back" style="margin-top:3rem">← Back to all work</a>
+</article>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">Manthan <em>Joshi.</em><span>CGT / Boston / 2026</span></div>
+    <div>
+      <h4>Navigate</h4>
+      <a href="../index.html">Home</a>      <a href="../resume.html">Résumé</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <a href="mailto:manthan2001@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/manthansjoshi/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/manthan-joshi" target="_blank">GitHub</a>
+    </div>
+    <div>
+      <h4>Based in</h4>
+      <a>Boston, Massachusetts</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 MANTHAN SHRIRAM JOSHI</div>
+    <div>DESIGNED IN BOSTON</div>
+  </div>
+</footer>
+
+</body>
+</html>
